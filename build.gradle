@@ -1,0 +1,73 @@
+plugins {
+    id 'application'
+    id 'java' 
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.1'
+    implementation 'com.google.cloud:google-cloud-firestore:3.27.3'
+}
+
+application {
+    mainClassName = 'Server'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['test']
+        }
+    }
+}
+
+tasks.register('runClient', JavaExec) {
+    main = 'Client'
+    classpath = sourceSets.main.runtimeClasspath
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+}
+
+tasks.register('runServer', JavaExec) {
+    main = 'Server'
+    classpath = sourceSets.main.runtimeClasspath
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+
+}
+
+tasks.register('runClient1', JavaExec) {
+    main = 'Client1' 
+    classpath = sourceSets.test.runtimeClasspath 
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+
+}
+
+tasks.register('runClient2', JavaExec) {
+    main = 'Client2'
+    classpath = sourceSets.test.runtimeClasspath 
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
+}
+
+test {
+    useJUnitPlatform() 
+
+    testLogging {
+        events "passed", "failed", "skipped" 
+        showStandardStreams = true           
+    }
+}

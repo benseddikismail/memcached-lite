@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ClientTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-10-23T00:04:24" hostname="Ismails-MacBook-Pro.local" time="1.94">
+  <properties/>
+  <testcase name="testSetCommand()" classname="ClientTest" time="1.014"/>
+  <testcase name="testGetCommand()" classname="ClientTest" time="0.925"/>
+  <system-out><![CDATA[Server is running on port 9090 and waiting for clients...
+Client connected!
+Sending set request to server...
+Time taken to process SET request: 992 ms
+Time taken to receive SET response: 992ms
+Response from server: STORED
+Client connected!
+Sending set request to server...
+Time taken to process SET request: 79 ms
+Time taken to receive SET response: 79ms
+Response from server: STORED
+Client connected!
+Sending shutdown request to server...
+Shutdown command received. Stopping server...
+Response from server: Server shutting down...
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
