@@ -20,9 +20,9 @@ The following are the steps to run the client and server as separate processes:
 ### Memcached-lite
 For basic performance measurement, the server measures the time it takes it to process requests.
 The client, on the other hand, measure end-to-end latency. The average server performance after 10 experiments can be outlined as follows:
-• SET request processing: 630 ms.
-• GET request processing: 304 ms.
-• Response time: 950 ms.
+- SET request processing: 630 ms.
+- GET request processing: 304 ms.
+- Response time: 950 ms.
 
 The performance of the server is slightly worse than its performance when tested locally, which
 makes sense seen that this time around network latency comes into play.
@@ -33,9 +33,9 @@ KVServer and can be run as:
 ./gradlew runKVServer
 ```
 The performance of the server is, on average, as follows:
-• SET request processing: 410 ms.
-• GET request processing: 81 ms.
-• Response time: 840 ms.
+- SET request processing: 410 ms.
+- GET request processing: 81 ms.
+- Response time: 840 ms.
 
 For the same workload, the performance of the Key-Value store server is relatively better than the performance of the Memcached server. This makes sense seen that the first uses in-memory storage while the latter persists to the files.
 
@@ -89,12 +89,16 @@ $$W_{q, \text{KV}} = \frac{\rho_{\text{KV}}}{\mu_{\text{KV}}(1 - \rho_{\text{KV}
 So, even theoretically in accordance with the M/M/1 queueing model, the KV server has smaller
 latency than the memchached server; largely due to the storage type.
 
-<img width="712" alt="plot1" src="https://github.com/benseddikismail/memcached-lite/blob/main/data/response_times_plot_1.png">
-**Fig 1:** Latency Graphs: Lighter Workload.
 
+<div style="text-align: center;">
+    <img width="712" alt="plot1" src="https://github.com/benseddikismail/memcached-lite/blob/main/data/response_times_plot_1.png">
+    <p><b>Figure 1:</b> Latency Graphs: Lighter Workload.</p>
+</div>
 
-<img width="712" alt="plot2" src="https://github.com/benseddikismail/memcached-lite/blob/main/data/response_times_plot_2.png">
-**Fig 2:** Latency Graphs: Heavier Workload
+<div style="text-align: center;">
+    <img width="712" alt="plot2" src="https://github.com/benseddikismail/memcached-lite/blob/main/data/response_times_plot_2.png">
+    <p><b>Figure 2:</b> Latency Graphs: Heavier Workload.</p>
+</div>
 
 The plots were generated using Matplotlib. The Python script as well as the empirical data used to
 generate the plots can be found under data/.
