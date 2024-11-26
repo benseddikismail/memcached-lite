@@ -1,5 +1,6 @@
 # Memcached-lite
-Memcached-lite is an implementation of a distributed memory object caching system that uses a Memcached client-server model, using Google Cloud instances. 
+Memcached-lite is a distributed memory object caching system based on the Memcached client-server model, implemented using Google Cloud instances.
+
 ## Operations
 The client and the server processes are each hosted on a VM instance. The client uses the external IP of the server to connect to it. The source files can be found under src/main/java/
 The following are the steps to run the client and server as separate processes:
