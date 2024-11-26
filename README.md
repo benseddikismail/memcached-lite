@@ -61,7 +61,7 @@ $$\Lambda_1 = 9 \, \text{requests/second}$$
 
 For the Memcached server, with an estimated service rate of:
 
-$$\mu_{\text{memcached}} = \frac{9}{0.63} = 14.3 \, \text{requests/second}$$
+$$\mu_{\text{memcached}} = \frac{9}{0.63} = 14.3 \text{ requests/second}$$
 
 the utilization is calculated as:
 
@@ -69,14 +69,14 @@ $$\rho_{\text{memcached}} = \frac{\Lambda_1}{\mu_{\text{memcached}}} = \frac{9}{
 
 The average latency for the Memcached server is:
 
-$$W_{q, \text{memcached}} = \frac{\rho_{\text{memcached}}}{\mu_{\text{memcached}}(1 - \rho_{\text{memcached}})} = \frac{0.63}{14.3 (1 - 0.63)} \approx 0.1190 \text{seconds}$$
+$$W_{q, \text{memcached}} = \frac{\rho_{\text{memcached}}}{\mu_{\text{memcached}}(1 - \rho_{\text{memcached}})} = \frac{0.63}{14.3 (1 - 0.63)} \approx 0.1190 \text{ seconds}$$
 
 
 #### KV Server Utilization and Latency
 
 For the KV server, with an estimated service rate of:
 
-$$\mu_{\text{KV}} = \frac{9}{0.410} = 21.95 \, \text{requests/second}$$
+$$\mu_{\text{KV}} = \frac{9}{0.410} = 21.95 \text{ requests/second}$$
 
 the utilization is given by:
 
@@ -84,13 +84,30 @@ $$\rho_{\text{KV}} = \frac{\Lambda_1}{\mu_{\text{KV}}} = \frac{9}{21.95} \approx
 
 leading to an average latency of:
 
-$$W_{q, \text{KV}} = \frac{\rho_{\text{KV}}}{\mu_{\text{KV}}(1 - \rho_{\text{KV}})} = \frac{0.410}{21.95 (1 - 0.410)} \approx 0.0316 \, \text{seconds}$$
+$$W_{q, \text{KV}} = \frac{\rho_{\text{KV}}}{\mu_{\text{KV}}(1 - \rho_{\text{KV}})} = \frac{0.410}{21.95 (1 - 0.410)} \approx 0.0316 \text{ seconds}$$
 
 So, even theoretically in accordance with the M/M/1 queueing model, the KV server has smaller
 latency than the memchached server; largely due to the storage type.
 
 <img width="712" alt="plot1" src="https://github.com/benseddikismail/memcached-lite/blob/main/data/response_times_plot_1.png">
+**Fig 1:** Latency Graphs: Lighter Workload.
+
 
 <img width="712" alt="plot2" src="https://github.com/benseddikismail/memcached-lite/blob/main/data/response_times_plot_2.png">
+**Fig 2:** Latency Graphs: Heavier Workload
+
+The plots were generated using Matplotlib. The Python script as well as the empirical data used to
+generate the plots can be found under data/.
+
+## Conclusion
+The performance of the memcached server was found to be inferior to that of the Google key-value
+store, primarily due to the inherent speed advantage of memory storage over disk-based storage.
+This study provided valuable insights by comparing empirical results with theoretical predictions
+derived from the M/M/1 queuing model. Additionally, the Google Cloud Platform offers a robust
+interface for tracking various costs and performance metrics, including CPU and memory utilization,
+as well as detailed measurements of latency and throughput. Future work could expand on these
+findings through more extensive testing, generating larger datasets, and incorporating additional
+metrics available through the Google Cloud console to deepen the analysis.
+
 
 
