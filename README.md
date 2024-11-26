@@ -51,33 +51,40 @@ better with a total average 300 ms latency, compared to upwards of 1000 ms for t
 server. This demonstrates the difference in latency between memory storage and disk storage.
 The first workload: 3 clients, 3 requests per client, and a delay of 1000 ms between requests. The arrival rate $$\lambda_1$$ can be calculated as:
 
-$$\lambda_1 = \frac{1}{\text{delay}} = \frac{1}{1} = 1 \, \text{request/second}$$, 
+$$\lambda_1 = \frac{1}{\text{delay}} = \frac{1}{1} = 1 \text{request/second}$$
 
 with a total arrival rate for all clients of:
-$$\Lambda_1 = 9 \, \text{requests/second}.$$
+
+$$\Lambda_1 = 9 \text{requests/second}$$
 
 #### Memcached Server Utilization and Latency
 
 For the Memcached server, with an estimated service rate of:
-$$\mu_{\text{memcached}} = \frac{9}{0.63} = 14.3 \, \text{requests/second}$$,
+
+$$\mu_{\text{memcached}} = \frac{9}{0.63} = 14.3 \text{requests/second}$$
 
 the utilization is calculated as:
-$$\rho_{\text{memcached}} = \frac{\Lambda_1}{\mu_{\text{memcached}}} = \frac{9}{14.3} \approx 0.63.$$
+
+$$\rho_{\text{memcached}} = \frac{\Lambda_1}{\mu_{\text{memcached}}} = \frac{9}{14.3} \approx 0.63$$
 
 The average latency for the Memcached server is:
-$$W_{q, \text{memcached}} = \frac{\rho_{\text{memcached}}}{\mu_{\text{memcached}}(1 - \rho_{\text{memcached}})} = \frac{0.63}{14.3 (1 - 0.63)} \approx 0.1190 \, \text{seconds}.$$
+
+$$W_{q, \text{memcached}} = \frac{\rho_{\text{memcached}}}{\mu_{\text{memcached}}(1 - \rho_{\text{memcached}})} = \frac{0.63}{14.3 (1 - 0.63)} \approx 0.1190 \text{seconds}$$
 
 
 #### KV Server Utilization and Latency
 
 For the KV server, with an estimated service rate of:
-$$\mu_{\text{KV}} = \frac{9}{0.410} = 21.95 \, \text{requests/second}$$,
+
+$$\mu_{\text{KV}} = \frac{9}{0.410} = 21.95 \, \text{requests/second}$$
 
 the utilization is given by:
-$$\rho_{\text{KV}} = \frac{\Lambda_1}{\mu_{\text{KV}}} = \frac{9}{21.95} \approx 0.410$$,
+
+$$\rho_{\text{KV}} = \frac{\Lambda_1}{\mu_{\text{KV}}} = \frac{9}{21.95} \approx 0.410$$
 
 leading to an average latency of:
-$$W_{q, \text{KV}} = \frac{\rho_{\text{KV}}}{\mu_{\text{KV}}(1 - \rho_{\text{KV}})} = \frac{0.410}{21.95 (1 - 0.410)} \approx 0.0316 \, \text{seconds}.$$
+
+$$W_{q, \text{KV}} = \frac{\rho_{\text{KV}}}{\mu_{\text{KV}}(1 - \rho_{\text{KV}})} = \frac{0.410}{21.95 (1 - 0.410)} \approx 0.0316 \text{seconds}$$
 
 So, even theoretically in accordance with the M/M/1 queueing model, the KV server has smaller
 latency than the memchached server; largely due to the storage type.
